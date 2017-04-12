@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Socket
 
 /// A report of the outcome of a handshake with a House Device.
 public struct HandshakeResponse {
@@ -30,6 +31,8 @@ public struct HandshakeResponse {
     /// The role of the device, `nil` if the handshake failed.
     public let role: HouseDevice.Role?
     
+    public let socket: Socket?
+    
     /// The categories device supports, `nil` if the handshake failed.
     public let supportedCategories: Set<HouseCategory>?
     
@@ -40,10 +43,11 @@ public struct HandshakeResponse {
     ///   - identifier: The house identifier of the device that has been connected with, `nil` if the handshake failed.
     ///   - role: The role of the device, `nil` if the handshake failed.
     ///   - supportedCategories: The categories device supports, `nil` if the handshake failed.
-    public init(_ status: HandshakeResponse.Status = .success, identifier: HouseIdentifier? = nil, role: HouseDevice.Role? = nil, supportedCategories: Set<HouseCategory>? = nil) {
+    public init(_ status: HandshakeResponse.Status = .success, socket: Socket? = nil, identifier: HouseIdentifier? = nil, role: HouseDevice.Role? = nil, supportedCategories: Set<HouseCategory>? = nil) {
         self.status = status
         self.houseIdentifier = identifier
         self.role = role
+        self.socket = socket
         self.supportedCategories = supportedCategories
     }
     

@@ -59,6 +59,10 @@ final public class HouseNetwork {
     /// Listener delegate.
     public var beaconDelegate: MulticastBeaconDelegate? = nil
     
+    /// Success callback.
+    public var responseDelegate: HandshakeResponseDelegate? = nil 
+    
+    
     //MARK: - Open Network
     
     /// The timer that periodically checks to ensure we keep listening for sockets.

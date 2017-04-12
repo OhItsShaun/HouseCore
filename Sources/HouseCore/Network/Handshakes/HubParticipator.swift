@@ -6,8 +6,6 @@
 //  Copyright © 2017 Shaun Merchant. All rights reserved.
 //
 
-//TODO: Move to Hub side of things.
-
 import Foundation
 import Socket
 #if os(Linux)
@@ -34,13 +32,15 @@ public final class HouseNetworkInitiatorParticipator: HouseNetworkParticipatorDe
         Log.debug("Recieved device connection (\(socket.remoteHostname)). Handling connection...", in: .network)
         
         let response = self.performHandshake(with: socket)
-        guard response.status == .success, let houseIdentifier = response.houseIdentifier else {
-            Log.debug("Device connection (\(socket.remoteHostname)) failed handshake", in: .network)
-            socket.close()
-            return
-        }
         
-        //MARK
+        HouseNetwork.current().responseDelegate?.handshakeDidOccur(with: response)
+       
+//        guard response.status == .success, let houseIdentifier = response.houseIdentifier else {
+//            Log.debug("Device connection (\(socket.remoteHostname)) failed handshake", in: .network)
+//            socket.close()
+//            return
+//        }
+        
 //        if HouseDevice.current().role == .houseHub {
 //            let device = HouseExtension(houseIdentifier)
 //            if let categories = response.supportedCategories {
@@ -51,9 +51,9 @@ public final class HouseNetworkInitiatorParticipator: HouseNetworkParticipatorDe
 //            Log.debug("Adding House Extension: \(device)", in: .network)
 //            House.extensions.addExtension(device)
 //        }
-        
-        Log.debug("Device connection (\(socket.remoteHostname)) succeeded handshake.", in: .network)
-        self.houseDevices.updateConnector(address: socket.remoteHostname, activeSocket: socket, for: houseIdentifier)
+//        
+//        Log.debug("Device connection (\(socket.remoteHostname)) succeeded handshake.", in: .network)
+//        self.houseDevices.updateConnector(address: socket.remoteHostname, activeSocket: socket, for: houseIdentifier)
     }
     
     public func performHandshake(with socket: Socket) -> HandshakeResponse {
@@ -196,7 +196,7 @@ public final class HouseNetworkInitiatorParticipator: HouseNetworkParticipatorDe
 
             
             // Wasn't so hard now, was it?
-            return HandshakeResponse(.success, identifier: houseIdentifier, role: .houseExtension, supportedCategories: categories)
+            return HandshakeResponse(.success, socket: socket, identifier: houseIdentifier, role: .houseExtension, supportedCategories: categories)
         }
         catch {
             Log.warning("Failed handshake. Reason: \(error)", in: .networkHandshake)
