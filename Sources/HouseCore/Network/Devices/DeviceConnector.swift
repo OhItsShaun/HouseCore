@@ -25,7 +25,7 @@ public struct HouseDeviceConnector {
     /// - Parameters:
     ///   - houseIdentifier: The House Identifier of the House Device.
     ///   - ipAddress: The IP address of the House Device.
-    init(for houseIdentifier: HouseIdentifier, atAddress ipAddress: String) {
+    public init(for houseIdentifier: HouseIdentifier, atAddress ipAddress: String) {
         Log.debug("Device Connector Update: \(houseIdentifier) at \(ipAddress)", in: .connectedDevices)
         self.houseIdentifier = houseIdentifier
         self.ipAddress = ipAddress
@@ -33,12 +33,12 @@ public struct HouseDeviceConnector {
     
 }
 
-extension HouseDeviceConnector {
+public extension HouseDeviceConnector {
     
     /// Create a new connection to the House Device.
     ///
     /// - Returns: A connection ready to recieve Messages to the House Device, nil if a connection could not be established.
-    func newConnection() -> Socket? {
+    public func newConnection() -> Socket? {
         Log.debug("Creating new connection for \(self.houseIdentifier) at \(self.ipAddress)", in: .connectedDevices)
         do {
             let socket = try Socket.create()

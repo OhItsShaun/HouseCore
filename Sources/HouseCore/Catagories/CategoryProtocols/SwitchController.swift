@@ -41,7 +41,7 @@ public protocol SwitchControllerDelegate {
 }
 
 
-extension SwitchControllerDelegate {
+public extension SwitchControllerDelegate {
     
     public func didDetermineSwitchState(was state: SwitchState) {
         self.didDetermineSwitchState(was: state, at: Date())

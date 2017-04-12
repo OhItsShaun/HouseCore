@@ -22,7 +22,7 @@ public struct Service {
     /// - Parameters:
     ///   - identifier: The identifier of the service.
     ///   - block: The block that data is applied to when the service is performed.
-    init(_ identifier: ServiceIdentifier, performs block: @escaping ((Data) -> Void)) {
+    public init(_ identifier: ServiceIdentifier, performs block: @escaping ((Data) -> Void)) {
         self.identifier = identifier
         self.block = block
     }

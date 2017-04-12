@@ -14,7 +14,7 @@
 import Foundation
 import Socket
 
-extension Socket {
+public extension Socket {
     
     ///
     /// Monitor a socket, returning when data is available or timeout occurs.
@@ -48,7 +48,7 @@ extension Socket {
     
 }
 
-extension Socket {
+public extension Socket {
     
     /// Enable socket address resure.
     ///
@@ -149,7 +149,7 @@ extension Socket {
     
 }
 
-extension Socket {
+public extension Socket {
     
     /// An error relating to multicasting.
     public struct MulticastError: Swift.Error, CustomStringConvertible {

@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension Date {
+public extension Date {
     
     /// The amount of time that has passed between the start of the current day and the time at which the getter was called.
     public static var timeIntervalIntoCurrentDay: TimeInterval {
@@ -52,7 +52,7 @@ extension Date {
     }
 }
 
-extension TimeInterval {
+public extension TimeInterval {
     
     /// The amount of seconds in a day.
     public static var secondsInADay: TimeInterval {

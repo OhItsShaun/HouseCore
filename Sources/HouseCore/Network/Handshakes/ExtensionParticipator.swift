@@ -13,7 +13,7 @@ import Socket
 #endif
 
 /// A delegate to allow House Extensions to participate in the House Network.
-final class HouseNetworkRecieverParticipator: HouseNetworkParticipatorDelegate, MessageOutboxResponderDelegate {
+public final class HouseNetworkRecieverParticipator: HouseNetworkParticipatorDelegate, MessageOutboxResponderDelegate {
     
     /// Known devices and their connectors.
     private var houseDevices = HouseDeviceConnectors()
@@ -24,7 +24,7 @@ final class HouseNetworkRecieverParticipator: HouseNetworkParticipatorDelegate, 
     /// Create a new House Network delegate for House Extensions to participate in the House Network.
     /// The outbox of the current House Device will be set to route messages through the instanced 
     /// delegate.
-    init () {
+    public init () {
         HouseDevice.current().messageOutbox.outboxResponderDelegate = self
     }
     
@@ -46,7 +46,7 @@ final class HouseNetworkRecieverParticipator: HouseNetworkParticipatorDelegate, 
         HouseNetwork.current().beaconDelegate = nil
     }
     
-    internal func performHandshake(with socket: Socket) -> HandshakeResponse {
+    public func performHandshake(with socket: Socket) -> HandshakeResponse {
         do {
             ///
             /// 1. We expect to recieve HNCP.initiation from houseHub

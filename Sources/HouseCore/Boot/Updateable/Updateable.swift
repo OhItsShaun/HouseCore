@@ -9,7 +9,7 @@
 import Foundation
 
 /// Conformants to `UpdateableProcess` hand responsibility of the run loop and persisting themselves in memory to `BootstrapUpdatable`.
-protocol UpdateableProcess: HouseProcess {
+public protocol UpdateableProcess: HouseProcess {
     
     /// How often the extension will be notified to update with `update`.
 	/// The update frequency is not guaranteed, treat as an approximation.
@@ -29,7 +29,7 @@ protocol UpdateableProcess: HouseProcess {
     
 }
 
-extension UpdateableProcess {
+public extension UpdateableProcess {
     
     func updatesWillStart() {
         
@@ -42,7 +42,7 @@ extension UpdateableProcess {
 }
 
 /// An enumation of frequencies.
-enum UpdateFrequency: TimeInterval {
+public enum UpdateFrequency: TimeInterval {
     
     /// As often as possible.
     case oftenAsPossible = 0.5

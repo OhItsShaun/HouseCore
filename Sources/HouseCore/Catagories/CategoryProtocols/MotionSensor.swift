@@ -40,9 +40,9 @@ public protocol MotionSensorDelegate {
     
 }
 
-extension MotionSensorDelegate {
+public extension MotionSensorDelegate {
     
-    func didDetermineMotionSensorStatus(was motionStatus: MotionStatus) {
+    public func didDetermineMotionSensorStatus(was motionStatus: MotionStatus) {
         self.didDetermineMotionSensorStatus(was: motionStatus, at: Date())
     }
     

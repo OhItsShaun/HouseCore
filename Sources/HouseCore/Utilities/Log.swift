@@ -163,17 +163,7 @@ public struct Log {
         /// Whether debugging is enabled for the domain.
         var debugging: Bool {
             switch self {
-//            case .category: return true
-//                        case .standardPackages: return true
-//            case .standardPackages: return false
-//            case .timeAstronomical: return false
-//            case .automation: return true
-//            case .urlRequest: return true
-////            case .network: return false
-//            case .packageRegistry: return false
-//            case .boot: return false
-            case .debugPackage: return true
-            default: return false
+                default: return true
             }
         }
     }

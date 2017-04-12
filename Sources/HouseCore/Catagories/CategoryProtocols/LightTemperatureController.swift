@@ -44,7 +44,7 @@ public protocol LightTemperatureControllerDelegate: LightControllerDelegate {
     
 }
 
-extension LightTemperatureControllerDelegate {
+public extension LightTemperatureControllerDelegate {
     
     public func didDetermineLightTemperature(was lightTemperature: LightTemperature) {
         self.didDetermineLightTemperature(was: lightTemperature, at: Date())

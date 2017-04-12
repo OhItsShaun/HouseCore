@@ -18,13 +18,13 @@ public protocol HubInterfaceDelegate {
     
 }
 
-extension HubInterfaceDelegate {
+public extension HubInterfaceDelegate {
     
-    func room(called name: String, was event: HubEvent) {
+    public func room(called name: String, was event: HubEvent) {
         self.eventDidOccur(of: event, in: .room(name: name))
     }
     
-    func houseExtension(with identifier: HouseIdentifier, was event: HubEvent) {
+    public func houseExtension(with identifier: HouseIdentifier, was event: HubEvent) {
         self.eventDidOccur(of: event, in: .houseExtension(identifier: identifier))
     }
     

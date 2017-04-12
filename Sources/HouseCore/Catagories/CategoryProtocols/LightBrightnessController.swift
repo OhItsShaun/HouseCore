@@ -44,7 +44,7 @@ public protocol LightBrightnessControllerDelegate: LightControllerDelegate {
     
 }
 
-extension LightBrightnessControllerDelegate {
+public extension LightBrightnessControllerDelegate {
     
     public func didDetermineLightBrightness(was lightBrightness: LightBrightness) {
         self.didDetermineLightBrightness(was: lightBrightness, at: Date())

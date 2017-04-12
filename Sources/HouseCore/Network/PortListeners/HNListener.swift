@@ -20,7 +20,7 @@ public class HouseNetworkListener: PortListenerDelegate {
     /// Instance a new listener for potential House connections.
     ///
     /// - Parameter connectionHandler: A closure to handle incoming connections.
-    init(forwardingConnectionsTo connectionHandler: @escaping (Socket) -> ()) {
+    public init(forwardingConnectionsTo connectionHandler: @escaping (Socket) -> ()) {
         self.connectionHandler = connectionHandler
     }
     

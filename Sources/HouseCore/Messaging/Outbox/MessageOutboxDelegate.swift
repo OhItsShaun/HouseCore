@@ -39,7 +39,7 @@ public protocol MessageOutboxDelegate {
     
 }
 
-extension MessageOutboxDelegate {
+public extension MessageOutboxDelegate {
     
     /// Add a message that expires after 1 minute.
     ///

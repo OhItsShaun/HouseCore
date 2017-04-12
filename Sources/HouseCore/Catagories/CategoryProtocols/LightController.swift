@@ -45,7 +45,7 @@ public protocol LightControllerDelegate {
     func didDetermineLightStatus(was status: LightStatus, at time: Date)
 }
 
-extension LightControllerDelegate {
+public extension LightControllerDelegate {
     
     public func didDetermineLightStatus(was status: LightStatus) {
         self.didDetermineLightStatus(was: status, at: Date())

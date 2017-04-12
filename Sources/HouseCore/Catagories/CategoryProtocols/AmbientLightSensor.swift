@@ -39,7 +39,7 @@ public protocol AmbientLightSensorDelegate {
     
 }
 
-extension AmbientLightSensorDelegate {
+public extension AmbientLightSensorDelegate {
     
     public func didDetermineAmbientLightReading(was ambientLight: AmbientLight) {
         self.didDetermineAmbientLightReading(was: ambientLight, at: Date())

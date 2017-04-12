@@ -16,7 +16,7 @@ public class PackageRegistry {
 }
 
 // MARK: - Registration
-extension PackageRegistry {
+public extension PackageRegistry {
     
     /// Register a service and associated block into a package.
     ///

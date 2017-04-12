@@ -14,7 +14,7 @@ import Foundation
 /// and will **not** make any subsequent calls for that execution run.
 ///
 /// - Important: Only conform if you know what you're doing. If in doubt, use `UpdateableProcess`.
-protocol StartableProcess: HouseProcess {
+public protocol StartableProcess: HouseProcess {
     
     /// Start the House Device.
     func start()

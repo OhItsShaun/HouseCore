@@ -32,7 +32,7 @@ public enum Weekday: UInt8 {
     case sunday
 }
 
-extension Weekday {
+public extension Weekday {
     
     /// Create an ordered list of all days in the week.
     ///
@@ -44,7 +44,7 @@ extension Weekday {
     }
 }
 
-extension Weekday {
+public extension Weekday {
     
     /// Find the day that comes logically after the current value.
     ///
@@ -92,7 +92,7 @@ extension Weekday {
     
 }
 
-extension Weekday {
+public extension Weekday {
     
     public static var today: Weekday {
         get {

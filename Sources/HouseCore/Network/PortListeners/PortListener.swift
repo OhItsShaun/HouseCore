@@ -30,7 +30,7 @@ public protocol PortListenerDelegate: class {
     func stop()
 }
 
-extension PortListenerDelegate {
+public extension PortListenerDelegate {
     
     /// Whether the delegate has binded to, and listening on, the port.
     public var isListening: Bool {

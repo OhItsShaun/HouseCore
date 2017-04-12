@@ -15,7 +15,7 @@ import Random
 ///         Undefiend behaviour will occur if two Extensions share one identifier.
 public typealias HouseIdentifier = UInt64
 
-extension HouseIdentifier {
+public extension HouseIdentifier {
     
     /// The identifier of the House Hub.
     public static var hub: HouseIdentifier = 1
@@ -25,7 +25,7 @@ extension HouseIdentifier {
     
 }
 
-extension HouseIdentifier {
+public extension HouseIdentifier {
     
     /// Generate a random identifier that can be assumed to be unique (probably).
     ///

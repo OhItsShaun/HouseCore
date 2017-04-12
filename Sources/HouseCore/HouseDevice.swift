@@ -46,7 +46,7 @@ public class HouseDevice {
     /// - Parameters:
     ///   - delegate: The delegate that acts as the main process of the device.
     ///   - houseIdentifier: The House Identfier of the device.
-    init (with delegate: HouseProcess, using houseIdentifier: HouseIdentifier? = nil, as role: HouseDevice.Role = .houseExtension) {
+    public init(with delegate: HouseProcess, using houseIdentifier: HouseIdentifier? = nil, as role: HouseDevice.Role = .houseExtension) {
         
         // Set the architecture
         if MemoryLayout<Int>.size == MemoryLayout<Int64>.size {
@@ -119,7 +119,7 @@ public class HouseDevice {
         /// Retrieve an instance of the respective pariticpator delegate for each role.
         ///
         /// - Returns: The respective partiticpator delegate.
-        func participatorDelegate() -> HouseNetworkParticipatorDelegate {
+        public func participatorDelegate() -> HouseNetworkParticipatorDelegate {
             switch self {
             case .houseHub:
                 return HouseNetworkInitiatorParticipator()
@@ -131,7 +131,7 @@ public class HouseDevice {
         /// Retrieve an instance of the respective beacon delegate for each role.
         ///
         /// - Returns: The respective beacon delegate.
-        func beaconDelegate() -> MulticastBeaconDelegate {
+        public func beaconDelegate() -> MulticastBeaconDelegate {
             switch self {
             case .houseHub:
                 return HouseBeaconEmitter()

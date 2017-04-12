@@ -41,7 +41,7 @@ public enum HouseCategory: UInt16, Hashable {
 }
 
 
-extension HouseCategory {
+public extension HouseCategory {
 
     /// Create an ordered list of bitmasks that represent a given set of supported categories.
     ///

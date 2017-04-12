@@ -42,7 +42,7 @@ public struct HouseCategoryDelegates {
     
 }
 
-extension HouseCategoryDelegates {
+public extension HouseCategoryDelegates {
     
     /// Create a set of currently supported categories.
     ///
