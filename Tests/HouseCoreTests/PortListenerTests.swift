@@ -15,12 +15,17 @@ import Socket
 
 class PortListenerTests: XCTestCase {
 
+    override func setUp() {
+        super.setUp()
+        HouseDevice.create(with: HouseSample())
+    }
+    
     func testPortListener() {
         let dispatch = DispatchQueue(label: "dispatch", qos: .utility, attributes: .concurrent)
         let expectation = XCTestExpectation(description: "Port Listener Expectation")
         let sentData = "hello".archive()
         
-        let portListener = HouseNetworkListener(forwardingConnectionsTo: { socket in
+        let portListener = HouseNetworkListener() { socket in
             do {
                 var data = Data()
                 let _ = try socket.read(into: &data)
@@ -31,7 +36,7 @@ class PortListenerTests: XCTestCase {
             catch {
                 XCTFail("error: \(error)")
             }
-        })
+        }
         
         dispatch.async {
             portListener.listen()
@@ -61,4 +66,10 @@ class PortListenerTests: XCTestCase {
         ("testPortListener", testPortListener),
     ]
 
+}
+
+struct HouseSample: StartableProcess {
+    func start() {
+        
+    }
 }

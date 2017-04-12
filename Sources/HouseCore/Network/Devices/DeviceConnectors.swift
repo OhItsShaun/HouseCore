@@ -187,17 +187,6 @@ public extension HouseDeviceConnectors {
     /// - Returns: Whether the message was sent successfully or not.
     public mutating func forward(message: Message) -> Bool {
         return self.lock.sync {
-            defer {
-                if HouseNetwork.current().lastContact.addingTimeInterval(300) < Date() {
-                    if HouseNetwork.current().beaconDelegate == nil {
-                        Log.warning("Not heard from House in substantial time. Re-opening UDP beacon.", in: .network)
-                        HouseNetwork.current().beaconDelegate = HouseDevice.current().role.beaconDelegate()
-                    }
-                    else {
-                        Log.debug("Not heard from House in substantial time. UDP beacon already open.", in: .network)
-                    }
-                }
-            }
             guard let worker = self.houseWorker(for: message.recipient) else {
                 Log.fatal("Unable to deliver message: \(message) to: \(message.recipient). No device connector found.", in: .networkMessages)
                 return false

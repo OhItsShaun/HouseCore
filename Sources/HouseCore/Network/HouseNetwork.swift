@@ -94,6 +94,17 @@ final public class HouseNetwork {
         if #available(OSX 10.12, *) {
             self.keepAliveTimer = Timer(timeInterval: Config.deviceNetworkTimerFrequency, repeats: true) { timer in
                 Log.debug("Serving network delegates...", in: .network)
+
+                if self.lastContact.addingTimeInterval(300) < Date() {
+                    if self.beaconDelegate == nil {
+                        Log.warning("Not heard from House in substantial time. Re-opening UDP beacon.", in: .network)
+                        self.beaconDelegate = HouseDevice.current().role.beaconDelegate()
+                    }
+                    else {
+                        Log.debug("Not heard from House in substantial time. UDP beacon already open.", in: .network)
+                    }
+                }
+                
                 self.dispatch.async {
                     self.beaconDelegate?.perform()
                 }
@@ -104,7 +115,7 @@ final public class HouseNetwork {
         } else {
             fatalError("Timer is unavailable on pre-OSX 10.12.")
         }
-        self.keepAliveTimer!.fire()
+        //self.keepAliveTimer!.fire()       <- This is bad. Do not uncomment. It causes duplicate port listeners. 
         RunLoop.main.add(self.keepAliveTimer!, forMode: .defaultRunLoopMode)
     }
     
