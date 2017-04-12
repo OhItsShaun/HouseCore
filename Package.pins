@@ -1,0 +1,48 @@
+{
+  "autoPin": true,
+  "pins": [
+    {
+      "package": "Archivable",
+      "reason": null,
+      "repositoryURL": "https://github.com/OhItsShaun/Archivable.git",
+      "version": "1.0.0"
+    },
+    {
+      "package": "DataStructures",
+      "reason": null,
+      "repositoryURL": "https://github.com/OhItsShaun/DataStructures.git",
+      "version": "1.0.0"
+    },
+    {
+      "package": "Random",
+      "reason": null,
+      "repositoryURL": "https://github.com/OhItsShaun/Random.git",
+      "version": "1.0.0"
+    },
+    {
+      "package": "Shell",
+      "reason": null,
+      "repositoryURL": "https://github.com/OhItsShaun/Shell.git",
+      "version": "1.0.0"
+    },
+    {
+      "package": "Socket",
+      "reason": null,
+      "repositoryURL": "https://github.com/IBM-Swift/BlueSocket.git",
+      "version": "0.12.44"
+    },
+    {
+      "package": "Time",
+      "reason": null,
+      "repositoryURL": "https://github.com/OhItsShaun/Time.git",
+      "version": "1.0.0"
+    },
+    {
+      "package": "syncDataTask",
+      "reason": null,
+      "repositoryURL": "https://github.com/OhItsShaun/syncDataTask",
+      "version": "0.1.2"
+    }
+  ],
+  "version": 1
+}
