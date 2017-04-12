@@ -32,14 +32,14 @@ public final class HouseNetworkInitiatorParticipator: HouseNetworkParticipatorDe
         Log.debug("Recieved device connection (\(socket.remoteHostname)). Handling connection...", in: .network)
         
         let response = self.performHandshake(with: socket)
-        
-        HouseNetwork.current().responseDelegate?.handshakeDidOccur(with: response)
        
-//        guard response.status == .success, let houseIdentifier = response.houseIdentifier else {
-//            Log.debug("Device connection (\(socket.remoteHostname)) failed handshake", in: .network)
-//            socket.close()
-//            return
-//        }
+        guard response.status == .success, let houseIdentifier = response.houseIdentifier else {
+            Log.debug("Device connection (\(socket.remoteHostname)) failed handshake", in: .network)
+            socket.close()
+            return
+        }
+        
+        HouseNetwork.current().responseDelegate?.handshakeDidSucceed(with: response)
         
 //        if HouseDevice.current().role == .houseHub {
 //            let device = HouseExtension(houseIdentifier)
@@ -51,9 +51,9 @@ public final class HouseNetworkInitiatorParticipator: HouseNetworkParticipatorDe
 //            Log.debug("Adding House Extension: \(device)", in: .network)
 //            House.extensions.addExtension(device)
 //        }
-//        
-//        Log.debug("Device connection (\(socket.remoteHostname)) succeeded handshake.", in: .network)
-//        self.houseDevices.updateConnector(address: socket.remoteHostname, activeSocket: socket, for: houseIdentifier)
+        
+        Log.debug("Device connection (\(socket.remoteHostname)) succeeded handshake.", in: .network)
+        self.houseDevices.updateConnector(address: socket.remoteHostname, activeSocket: socket, for: houseIdentifier)
     }
     
     public func performHandshake(with socket: Socket) -> HandshakeResponse {

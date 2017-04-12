@@ -60,7 +60,7 @@ final public class HouseNetwork {
     public var beaconDelegate: MulticastBeaconDelegate? = nil
     
     /// Success callback.
-    public var responseDelegate: HandshakeResponseDelegate? = nil 
+    public var responseDelegate: HandshakeSuccessResponseDelegate? = nil
     
     
     //MARK: - Open Network

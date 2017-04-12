@@ -8,8 +8,8 @@
 
 import Foundation
 
-public protocol HandshakeResponseDelegate {
+public protocol HandshakeSuccessResponseDelegate {
     
-    func handshakeDidOccur(with response: HandshakeResponse)
+    func handshakeDidSucceed(with response: HandshakeResponse)
     
 }

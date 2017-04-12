@@ -32,20 +32,19 @@ public final class HouseNetworkRecieverParticipator: HouseNetworkParticipatorDel
         Log.debug("Recieved device connection (\(socket.remoteHostname)). Handling connection...", in: .network)
         
         let response = self.performHandshake(with: socket)
-
-        HouseNetwork.current().responseDelegate?.handshakeDidOccur(with: response)
         
-//        guard response.status == .success, let houseIdentifier = response.houseIdentifier else {
-//            Log.debug("Device connection (\(socket.remoteHostname)) failed handshake", in: .network)
-//            return
-//        }
-//        
-//        Log.debug("Device connection (\(socket.remoteHostname)) succeeded handshake.", in: .network)
-//        self.houseDevices.updateConnector(address: socket.remoteHostname, activeSocket: socket, for: houseIdentifier)
-//        
-//        
-//        Log.debug("Stopping UDP Beacon...", in: .network)
-//        HouseNetwork.current().beaconDelegate = nil
+        guard response.status == .success, let houseIdentifier = response.houseIdentifier else {
+            Log.debug("Device connection (\(socket.remoteHostname)) failed handshake", in: .network)
+            return
+        }
+        
+        HouseNetwork.current().responseDelegate?.handshakeDidSucceed(with: response)
+        
+        Log.debug("Device connection (\(socket.remoteHostname)) succeeded handshake.", in: .network)
+        self.houseDevices.updateConnector(address: socket.remoteHostname, activeSocket: socket, for: houseIdentifier)
+        
+        Log.debug("Stopping UDP Beacon...", in: .network)
+        HouseNetwork.current().beaconDelegate = nil
     }
     
     public func performHandshake(with socket: Socket) -> HandshakeResponse {
