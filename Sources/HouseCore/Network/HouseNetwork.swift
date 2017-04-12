@@ -74,7 +74,7 @@ final public class HouseNetwork {
     /// Attempt to open a connection to the houseNetwork.
     ///
     /// - important: `open()` is highly asynchronous. It **will** return before it is connected to the houseNetwork.
-    public func open(as device: HouseDevice.Role = .houseExtension) {
+    public func open(as device: HouseDevice.Role) {
         self.close() // safety 
         
         
