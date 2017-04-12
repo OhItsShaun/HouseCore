@@ -20,12 +20,10 @@ public struct Log {
     ///   - message: The message to log.
     ///   - domain: The domain in which the message occured.
     public static func message(_ message: String, in domain: Log.Domain = .generic) {
-        #if DEBUG
-            guard domain.debugging else {
-                return
-            }
-            Log.write("\(domain): " + message)
-        #endif
+        guard domain.debugging else {
+            return
+        }
+        Log.write("\(domain): " + message)
     }
     
     /// Log a fatal message.
@@ -52,12 +50,10 @@ public struct Log {
     ///   - message: The debugging message to log.
     ///   - domain: The domain in which the debugging message occured.
     public static func debug(_ message: String, in domain: Log.Domain = .generic) {
-        #if DEBUG
-            guard domain.debugging else {
-                return
-            }
-            Log.write("🐞 \(domain): " + message)
-        #endif
+        guard domain.debugging else {
+            return
+        }
+        Log.write("🐞 \(domain): " + message)
     }
     
     /// Store a pre-formatted message to Log.

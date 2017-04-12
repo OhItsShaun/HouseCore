@@ -13,7 +13,7 @@ class NetworkMessagingTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        HouseNetwork.current().open()
+        HouseNetwork.current().open(as: .houseHub)
         RunLoop.main.run(until: Date().addingTimeInterval(0.25))
     }
     

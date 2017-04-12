@@ -12,7 +12,7 @@ import XCTest
 class NetworkSetupTests: XCTestCase {
 
     override func setUp() {
-        HouseNetwork.current().open()
+        HouseNetwork.current().open(as: .houseHub)
         RunLoop.main.run(until: Date().addingTimeInterval(0.25))
     }
     
