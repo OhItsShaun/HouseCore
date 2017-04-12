@@ -23,7 +23,7 @@ public struct RecordedValue {
     /// - Parameters:
     ///   - value: The value recorded.
     ///   - time: The time the value was recorded.
-    init(_ value: Archivable, recordedAt time: Date = Date()) {
+    public init(_ value: Archivable, recordedAt time: Date = Date()) {
         self.value = value
         self.recorded = time
     }

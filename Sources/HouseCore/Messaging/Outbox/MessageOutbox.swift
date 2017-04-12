@@ -58,7 +58,7 @@ public class MessageOutbox: MessageOutboxDelegate {
         private let writeLock = DispatchQueue(label: "houseNetwork.messageQueue.writeLock", qos: .userInitiated)
         
         /// Instance a new Message Collection.
-        init () {
+        public init () {
             
         }
         

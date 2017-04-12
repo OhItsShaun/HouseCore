@@ -167,7 +167,7 @@ public struct JSONError: Error, CustomStringConvertible {
     /// Create a new structure that represents a JSON error.
     ///
     /// - Parameter description: The description of the JSON error.
-    init(_ description: String) {
+    public init(_ description: String) {
        self.description = description
     }
 }
