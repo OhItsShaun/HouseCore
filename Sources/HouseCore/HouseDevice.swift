@@ -83,6 +83,7 @@ public class HouseDevice {
         }
         
         // Set the role
+        self.role = role 
     }
     
     //MARK: - House Identifier
@@ -101,7 +102,7 @@ public class HouseDevice {
     //MARK: - Role
     
     /// The role of the House Device.
-    private(set) public var role: HouseDevice.Role = .houseHub {
+    private(set) public var role: HouseDevice.Role {
         didSet {
             Log.debug("Didset House Role to: \(self.role)", in: .houseDevice)
         }
