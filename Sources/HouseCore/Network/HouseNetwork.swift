@@ -115,7 +115,7 @@ final public class HouseNetwork {
         } else {
             fatalError("Timer is unavailable on pre-OSX 10.12.")
         }
-        //self.keepAliveTimer!.fire()       <- This is bad. Do not uncomment. It causes duplicate port listeners. 
+        //self.keepAliveTimer!.fire()       <- This is bad. Do not uncomment. It causes duplicate port listeners.
         RunLoop.main.add(self.keepAliveTimer!, forMode: .defaultRunLoopMode)
     }
     

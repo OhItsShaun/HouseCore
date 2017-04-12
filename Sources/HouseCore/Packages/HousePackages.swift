@@ -62,18 +62,6 @@ public struct HousePackages {
             Log.debug("Registering Light-related services", in: .standardPackages)
             
             packageRegistry.register(in: 111, service: 1) { _ in
-                Log.debug("Requested Turn Off Light...", in: .standardPackages)
-                
-                guard let lightDelegate = HouseDevice.current().categoryDelegate.lightControllerDelegate else {
-                    Log.debug("> Extension does not conform to LightController", in: .standardPackages)
-                    return
-                }
-                
-                Log.debug("> Turning Off Light...", in: .standardPackages)
-                lightDelegate.turnOffLight()
-            }
-            
-            packageRegistry.register(in: 111, service: 2) { _ in
                 Log.debug("Requested Turn On Light...", in: .standardPackages)
                 
                 guard let lightDelegate = HouseDevice.current().categoryDelegate.lightControllerDelegate else {
@@ -85,6 +73,18 @@ public struct HousePackages {
                 lightDelegate.turnOnLight()
             }
             
+            
+            packageRegistry.register(in: 111, service: 2) { _ in
+                Log.debug("Requested Turn Off Light...", in: .standardPackages)
+                
+                guard let lightDelegate = HouseDevice.current().categoryDelegate.lightControllerDelegate else {
+                    Log.debug("> Extension does not conform to LightController", in: .standardPackages)
+                    return
+                }
+                
+                Log.debug("> Turning Off Light...", in: .standardPackages)
+                lightDelegate.turnOffLight()
+            }
             
             packageRegistry.register(in: 111, service: 3) { _ in
                 Log.debug("Requested Light Status...", in: .standardPackages)
