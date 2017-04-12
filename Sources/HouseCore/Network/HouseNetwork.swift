@@ -73,11 +73,11 @@ final public class HouseNetwork {
     
     /// Attempt to open a connection to the houseNetwork.
     ///
-    /// - important: `open()` is highly asynchronous. It **will** return before it is connected to the houseNetwork.
-    public func open(as device: HouseDevice.Role) {
+    /// - important: Use `.open()` unless you know what you're doing.
+    public func start() {
         self.close() // safety 
         
-        
+        let device = HouseDevice.current().role
         Log.debug("Opening HouseNetwork as \(device)...", in: .network)
         
         let participatorDelegate = device.participatorDelegate()

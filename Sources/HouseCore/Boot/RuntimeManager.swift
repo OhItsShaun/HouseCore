@@ -12,7 +12,7 @@ public struct HouseRuntime {
     
     private static var runner: Any? = nil
     
-    public static func run(_ process: HouseProcess, as role: HouseDevice.Role = .houseExtension) {
+    public static func run(_ process: HouseProcess, as role: HouseDevice.Role) {
         guard #available(OSX 10.12, *) else {
             fatalError("Unsupported platform. Compile for OSX 10.12.")
         }

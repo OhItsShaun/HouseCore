@@ -12,12 +12,13 @@ import XCTest
 class NetworkSetupTests: XCTestCase {
 
     override func setUp() {
-        HouseNetwork.current().open(as: .houseHub)
+        HouseDevice.create(with: HouseSample())
+        HouseNetwork.current().start()
         RunLoop.main.run(until: Date().addingTimeInterval(0.25))
     }
     
     override func tearDown() {
-        HouseNetwork.current().close()
+        HouseNetwork.current().start()
         HouseNetwork.destroy()
     }
     

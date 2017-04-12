@@ -23,7 +23,7 @@ public class HouseDevice {
     ///
     /// - Parameter delegate: The main delegate.
     public static func create(with delegate: HouseProcess, using houseIdentifier: HouseIdentifier? = nil, as role: HouseDevice.Role = .houseExtension) {
-        self._houseDevice = HouseDevice(with: delegate, using: houseIdentifier)
+        self._houseDevice = HouseDevice(with: delegate, using: houseIdentifier, as: role)
         HousePackages.initialiseEverything(to: self._houseDevice.packages)
     }
     

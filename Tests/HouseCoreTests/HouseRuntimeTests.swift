@@ -21,7 +21,7 @@ class HouseRuntimeTests: XCTestCase {
     
     func testStartingDelegate() {
         self.dispatch.async {
-            HouseRuntime.run(HouseStartingDelegate(startExpectation: self.startingExpectation))
+            HouseRuntime.run(HouseStartingDelegate(startExpectation: self.startingExpectation), as: .houseExtension)
         }
         let result = XCTWaiter.wait(for: [self.startingExpectation], timeout: 2)
         if result != .completed {
@@ -32,7 +32,7 @@ class HouseRuntimeTests: XCTestCase {
     func testUpdatingDelegate() {
         self.dispatch.async {
             print("Async running...")
-            HouseRuntime.run(HouseUpdatingDelegate(willStart: self.willStartExpectation, updated: self.updatedExpectation))
+            HouseRuntime.run(HouseUpdatingDelegate(willStart: self.willStartExpectation, updated: self.updatedExpectation), as: .houseExtension)
         }
         let result = XCTWaiter.wait(for: [self.willStartExpectation, self.updatedExpectation], timeout: 3)
         if result != .completed {

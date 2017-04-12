@@ -17,10 +17,11 @@ class PortListenerTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        HouseDevice.create(with: HouseSample())
     }
     
-    func testPortListener() {
+    func testHubPortListener() {
+        HouseDevice.create(with: HouseSample(), as: .houseHub)
+        
         let dispatch = DispatchQueue(label: "dispatch", qos: .utility, attributes: .concurrent)
         let expectation = XCTestExpectation(description: "Port Listener Expectation")
         let sentData = "hello".archive()
@@ -62,8 +63,53 @@ class PortListenerTests: XCTestCase {
         XCTAssert(!portListener.isListening)
     }
     
+    func testExtensionPortListener() {
+        HouseDevice.create(with: HouseSample(), as: .houseExtension)
+        
+        let dispatch = DispatchQueue(label: "dispatch", qos: .utility, attributes: .concurrent)
+        let expectation = XCTestExpectation(description: "Port Listener Expectation")
+        let sentData = "hello".archive()
+        
+        let portListener = HouseNetworkListener() { socket in
+            do {
+                var data = Data()
+                let _ = try socket.read(into: &data)
+                
+                XCTAssert(data == sentData, "Mismatch data")
+                expectation.fulfill()
+            }
+            catch {
+                XCTFail("error: \(error)")
+            }
+        }
+        
+        dispatch.async {
+            portListener.listen()
+        }
+        
+        dispatch.async {
+            do {
+                let socket = try Socket.create()
+                try socket.connect(to: "localhost", port: HNCP.extensionListeningPort)
+                try socket.write(from: sentData)
+            }
+            catch {
+                XCTFail("error: \(error)")
+            }
+        }
+        
+        XCTWaiter.wait(for: [expectation], timeout: 2)
+        
+        XCTAssert(portListener.isListening)
+        
+        portListener.stop()
+        
+        XCTAssert(!portListener.isListening)
+    }
+    
     static var allTests = [
-        ("testPortListener", testPortListener),
+        ("testHubPortListener", testHubPortListener),
+        ("testExtensionPortListener", testExtensionPortListener),
     ]
 
 }
